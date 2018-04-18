@@ -36,6 +36,15 @@ int simplerecursepower(int a, int b)
 	return p;
 }
 
+//c. *–екурсивно, использу€ свойство чЄтности степени.
+
+int power(int x, int n)
+{
+	if (n == 0) return 1;
+	if (n < 0) return power(1 / x, -n);
+	if (n % 2) return x * power(x, n - 1);
+	return power(x * x, n / 2);
+}
 
 int main(int argc, char * argv[])
 {
@@ -52,7 +61,9 @@ int main(int argc, char * argv[])
 	res = simplerecursepower(a, b);
 	printf("–езульат возведени€ в степень(проста€  рекурси€): %d\n", res);
 	getch();
-	//
+	res = power(a, b);
+	printf("–езульат возведени€ в степень( рекурси€ c использованием четности): %d\n", res);
+	getch();
 
 	return 0;
 }
